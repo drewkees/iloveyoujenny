@@ -71,6 +71,8 @@ npx http-server .
 **Merry Christmas\! 🎅**
 如果你觉得这项目有点意思，欢迎 Star，或者 Fork 改成你喜欢的颜色！
 
+新增移动端网页支持
+
 ## 📊 Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=electronicminer/gesture-Christmas_tree-3d_with_photo&type=Date)](https://star-history.com/#electronicminer/gesture-Christmas_tree-3d_with_photo&Date)
