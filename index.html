@@ -159,6 +159,20 @@
     </div>
     <div id="debug-info">Drag to rotate • Tap photo to view</div>
 
+    <!-- Background Music (Hidden Audio Element) -->
+    <audio id="background-music" loop>
+        <source src="music/wishlist.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Control Button -->
+    <div id="music-control" style="position: absolute; bottom: 20px; right: 20px; z-index: 100; 
+         background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(212, 175, 55, 0.4); 
+         padding: 12px; border-radius: 50%; cursor: pointer; backdrop-filter: blur(5px);
+         width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+         transition: all 0.3s; pointer-events: auto;">
+        <i class="fas fa-volume-mute" id="music-icon" style="color: #d4af37; font-size: 20px;"></i>
+    </div>
+
     <script type="module">
         import * as THREE from 'three';
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
@@ -219,7 +233,16 @@
         
         const debugInfo = document.getElementById('debug-info');
         let isCameraRunning = false;
-
+        
+        // Audio Player
+        const audioPlayer = document.getElementById('background-music');
+        const musicControl = document.getElementById('music-control');
+        const musicIcon = document.getElementById('music-icon');
+        let isMusicPlaying = false;
+        
+        // Setup audio player
+        audioPlayer.volume = 0.5; // Set volume to 50%
+        
         // 全局暴露给HTML按钮调用
         window.setMode = (mode) => {
             if (mode === 'FOCUS_RANDOM') {
@@ -244,6 +267,7 @@
             setupPostProcessing();
             setupEvents();
             setupTouchAndClick(); 
+            setupMusicControl();
             
             const loader = document.getElementById('loader');
             loader.style.opacity = 0;
@@ -721,7 +745,36 @@
                     if (controls) controls.classList.toggle('ui-hidden');
                     const webcam = document.getElementById('webcam-wrapper');
                     if(webcam) webcam.classList.toggle('ui-hidden');
+                } else if (key === 'm') {
+                    toggleMusic();
                 }
+            });
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                audioPlayer.pause();
+                musicIcon.className = 'fas fa-volume-mute';
+                isMusicPlaying = false;
+            } else {
+                audioPlayer.play().catch(err => {
+                    console.warn('Audio playback failed:', err);
+                    showMsg('Click to enable music');
+                });
+                musicIcon.className = 'fas fa-volume-up';
+                isMusicPlaying = true;
+            }
+        }
+
+        function setupMusicControl() {
+            musicControl.addEventListener('click', toggleMusic);
+            
+            // Add hover effect
+            musicControl.addEventListener('mouseenter', () => {
+                musicControl.style.transform = 'scale(1.1)';
+            });
+            musicControl.addEventListener('mouseleave', () => {
+                musicControl.style.transform = 'scale(1)';
             });
         }
 
