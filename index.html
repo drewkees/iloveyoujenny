@@ -148,10 +148,6 @@
 
     <div id="ui-layer">
         <h1>Merry Christmas LOVE</h1>
-        
-        <div class="controls-wrapper">
-            <div class="hint-text">Touch: Drag | Click Photo | Press 'H' to Hide UI</div>
-        </div>
     </div>
 
     <div id="webcam-wrapper">
@@ -703,7 +699,7 @@
             }
             requestAnimationFrame(predictWebcam);
         }
-
+        
         function processGestures(result) {
             if (result.landmarks && result.landmarks.length > 0) {
                 STATE.hand.detected = true;
