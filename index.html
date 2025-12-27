@@ -1,22 +1,13 @@
-<!--
-  - @Project: Grand Luxury Tree - Christmas Edition (Touch & Gesture & Stats)
-  - @Author: wp/electronicminer
-  - @Date: 2025-12-08
-  - @Description: 3D Christmas tree with AI Gestures + Touch + Traffic Analytics.
-  - @Style: Luxury Dashboard UI (Hidden by default, toggle with 'S')
--->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Grand Luxury Tree - Christmas Edition</title>
+    <title>iloveyousomuch</title>
     
-    <!-- 引入 FontAwesome 图标库 (让图标更美观) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
     <style>
-        /* 修改背景为深色渐变 */
         body { 
             margin: 0; 
             overflow: hidden; 
@@ -177,7 +168,7 @@
         import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'; 
         import { FilesetResolver, HandLandmarker } from '@mediapipe/tasks-vision';
 
-        // --- 核心配置 ---
+
         const CONFIG = {
             colors: {
                 bg: 0x050d1a, 
@@ -239,7 +230,6 @@
         // Setup audio player
         audioPlayer.volume = 0.5; // Set volume to 50%
         
-        // 全局暴露给HTML按钮调用
         window.setMode = (mode) => {
             if (mode === 'FOCUS_RANDOM') {
                 STATE.mode = 'FOCUS';
